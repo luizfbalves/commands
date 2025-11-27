@@ -4,6 +4,17 @@
 
 Analyze files or folders to ensure that monetary value handling strictly follows the **cents (integers)** pattern, as per the provided documentation. The goal is to find inconsistencies, bad practices, and potential bugs related to price manipulation.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `memory` | To store monetary pattern decisions and identified violations |
+| `mercadopago-mcp-server` | To validate payment patterns and get best practices for payment integration |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## REFERENCE DOCUMENTATION (SOURCE OF TRUTH)
 
 Use the following documentation as the sole source of truth for this analysis:

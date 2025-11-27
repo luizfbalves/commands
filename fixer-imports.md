@@ -4,6 +4,16 @@
 
 Find imports that use complex relative paths (e.g., `../../../utils/function.tsx`) and replace them with alias paths configured in the project's `tsconfig.json`, resulting in cleaner and more maintainable imports (e.g., `@/utils/function.tsx`).
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `memory` | To store tsconfig paths and import patterns for consistency |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## STEP 1: ASK THE USER (MANDATORY)
 
 Your first and only initial action must be to ask the user:

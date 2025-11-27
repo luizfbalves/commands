@@ -4,6 +4,17 @@
 
 Run the project's build, identify the **first** compilation error, fix it, and repeat this process iteratively until the build succeeds.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP                  | When to Use                                              |
+| -------------------- | -------------------------------------------------------- |
+| `sequentialthinking` | To analyze build errors and brainstorm solutions         |
+| `memory`             | To store decisions and patterns identified during fixing |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## GOLDEN RULE (INFLEXIBLE)
 
 It is **STRICTLY FORBIDDEN** to:
@@ -46,4 +57,3 @@ Before making any changes, you **MUST** follow this process for **EACH** build e
 
 8.  **Final Report:** After the build succeeds, present a summary:
     > "Build completed successfully after X correction cycles. A total of Y errors were fixed. The modified files were: [list of files]."
-

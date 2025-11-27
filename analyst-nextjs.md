@@ -6,6 +6,30 @@ To analyze a **file**, **component**, or **entire folder** (including subfolders
 
 This command also identifies excessively large files or folders with inadequate structure and proposes logical reorganization to improve maintainability.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To structure the performance and architecture analysis |
+| `memory` | To store/retrieve insights and decisions during analysis |
+| `context7` | To get documentation for Next.js and related libraries |
+| `next-devtools` | **PRIMARY SOURCE** - To get Next.js 16 best practices, resources, and tools |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
+### Using `next-devtools` MCP
+
+Before any analysis, you MUST query the `next-devtools` MCP server for up-to-date information:
+
+- Use `next-devtools` to get best practices for Server Components
+- Use `next-devtools` to check performance patterns for the app router
+- Use `next-devtools` to validate image optimization approaches
+- Use `next-devtools` to verify data fetching strategies
+
+**Replace any generic Next.js documentation lookup with `next-devtools` queries.**
+
 ## STEP 1: ASK THE USER (MANDATORY)
 
 Before doing anything, your first and only initial action must be to ask the user:
@@ -26,14 +50,15 @@ Wait for the user's response before proceeding.
   - Data flows between pages, hooks, and components
   - Size, responsibility, and overall structure complexity
 
-## STEP 3: CONSULT THE OFFICIAL NEXT.JS MCP SERVER
+## STEP 3: CONSULT THE `next-devtools` MCP SERVER
 
-- Use the official MCP Server to get up-to-date information about Next.js 16.
-- Examples of recommended questions:
+- Use the `next-devtools` MCP Server to get up-to-date information about Next.js 16.
+- Examples of recommended queries to `next-devtools`:
   - "What are the performance best practices for Server Components in Next.js 16?"
   - "When should I use 'use client' and what are the performance implications?"
   - "How to properly optimize images with next/image in Next.js 16?"
   - "What are the common performance pitfalls in Next.js 16 app router?"
+- Use `context7` for any third-party library documentation (e.g., Tailwind, Prisma, etc.)
 
 ## STEP 4: PERFORMANCE, ARCHITECTURE, AND STRUCTURE ANALYSIS (CHECKLIST)
 

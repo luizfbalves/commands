@@ -4,6 +4,20 @@
 
 To run the project's type-checker, identify TypeScript errors (including `any` types), and fix them using the best possible, most idiomatic TypeScript approach. This process repeats iteratively until the project passes all type checks with no `any` types remaining.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To decompose type problems and analyze potential solutions |
+| `memory` | To store important decisions made during type fixing |
+| `context7` | To get documentation for libraries and TypeScript patterns |
+| `shadcn` | When fixing types related to UI components |
+| `next-devtools` | When fixing types related to Next.js code (Server Components, routes, etc.) |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## GOLDEN RULE (INFLEXIBLE)
 
 - **STRICTLY FORBIDDEN:** Using `any`, `unknown` (as a lazy replacement), `@ts-ignore`, `@ts-nocheck`, or type assertions (`as any`) to silence errors.
@@ -26,14 +40,9 @@ To run the project's type-checker, identify TypeScript errors (including `any` t
 
 Before making any changes, you **MUST** follow this process for the identified error:
 
-#### Step 0: Use Available MCPs
+#### Step 0: Use MANDATORY MCP Tools
 
-Before analyzing the specific type issue, you **MUST** use available MCPs to gain deep understanding of context and make informed decisions.
-
-- Use `sequentialthinking` to decompose the problem and analyze potential solutions.
-- Use `memory` to store important decisions made during analysis.
-- Use `context7` to get an overview of the project architecture and existing patterns.
-- Use `shadcn` or `nextjs` MCPs if the code being fixed is related to UI components or Next.js patterns.
+Before analyzing the specific type issue, you **MUST** use the MCP tools defined in the MANDATORY MCP TOOLS section above to gain deep understanding of context and make informed decisions.
 
 #### Step 1: Identify the Error
 

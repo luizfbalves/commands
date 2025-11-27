@@ -4,6 +4,17 @@
 
 To critically analyze the quality and relevance of all logs in the project, regardless of the method used (`console.log`, `this.logger`, etc.). The goal is to generate an audit report with recommendations to ensure logs are useful, secure, and appropriate for a production environment.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP                  | When to Use                                                         |
+| -------------------- | ------------------------------------------------------------------- |
+| `sequentialthinking` | To systematically analyze each log and classify its appropriateness |
+| `memory`             | To store/retrieve log patterns and audit decisions                  |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## ANALYSIS GUIDELINES (DO NOT FOCUS ON THE METHOD)
 
 Look for ANY type of logging call (`console.*`, `this.logger.*`, `logger.*`, etc.) and classify it based on the following rules:
@@ -76,6 +87,7 @@ After presenting the complete report, ask:
 > "Audit complete. I found X appropriate logs, Y inappropriate logs, and Z critical ones.
 >
 > **What would you like to do next?**
+>
 > - **'plan'** → I'll call `/plan` to create an implementation plan for cleaning up logs
 > - **'details'** → I'll provide more details on specific log findings
 > - **'done'** → End the audit session"
@@ -83,4 +95,3 @@ After presenting the complete report, ask:
 **DO NOTHING BEYOND THIS. WAIT FOR THE USER'S RESPONSE.**
 
 **If user replies 'plan':** Automatically invoke the `/plan` command, passing the log cleanup recommendations as context.
-

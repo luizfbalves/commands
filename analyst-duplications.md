@@ -4,6 +4,17 @@
 
 To analyze a specified file or folder to identify repeated algorithms, duplicate logic, and common patterns that can be extracted into reusable helper functions, utilities, or constants. The goal is to propose a refactoring plan to improve maintainability and reduce redundancy.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To methodically analyze code and identify patterns of repetition |
+| `memory` | To store/retrieve identified patterns and refactoring decisions |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## WORKFLOW
 
 ### 1. ASK FOR TARGET (MANDATORY)

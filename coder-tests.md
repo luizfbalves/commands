@@ -9,15 +9,22 @@ The goal is not to maximize coverage but to validate real expected behaviors of 
 
 ---
 
-## MANDATORY TOOLS & FRAMEWORK
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To break down code behavior into testable units |
+| `memory` | To store structural decisions for consistent test generation |
+| `context7` | To understand project architecture and existing test conventions |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
+## TESTING FRAMEWORK & STYLE
 
 - **Testing Framework:** Vitest (required)
 - **Testing Style:** AAA pattern (Arrange, Act, Assert)
-- **Required MCPs:**
-  - `sequentialthinking` — to break down code behavior into testable units
-  - `memory` — to store important structural decisions for consistent test generation
-  - `context7` — to understand the project's architecture and existing test conventions
-  - Any other available MCPs that improve understanding, including dependency inspection and documentation lookup
 
 ---
 

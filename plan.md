@@ -9,12 +9,16 @@
 
 ## MANDATORY MCP TOOLS
 
-You MUST use the following MCP tools to perform your task:
+You MUST use the following MCP servers during your workflow:
 
-- **`sequentialthinking`**: Use it to break down the user's request into logical, sequential steps. Think out loud about the architecture, dependencies, and potential pitfalls.
-- **`memory`**: Use it to store important decisions made during planning (e.g., API structure, chosen components) to maintain consistency in the plan.
-- **`context7`**: Use it to get a high-level overview of the project, understand the existing architecture, and identify where the new functionality fits.
-- **`shadcn`**: If the implementation involves UI, use the `shadcn` MCP to check which components are available, how to install them, and best practices for using them.
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To break down the request into logical, sequential steps and think about architecture |
+| `memory` | To store important decisions (API structure, components) for consistency |
+| `context7` | To get documentation for libraries and understand existing architecture |
+| `shadcn` | To check available UI components, installation, and best practices |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
 ## WORKFLOW
 

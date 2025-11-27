@@ -8,6 +8,17 @@ Run the project's linter, identify, and automatically fix all issues, strictly a
 - **GOLDEN RULE (INFLEXIBLE):** It is **STRICTLY FORBIDDEN** to use `eslint-disable`, `// @ts-ignore`, `// @ts-nocheck`, or any similar comment to disable or ignore rules. **Any attempt to use this approach will be considered a complete task failure.** The fix must be in the code, never in the rule.
 - **Correction Method:** Apply the canonical, best-practice correction for the language/framework. The solution must solve the root cause of the problem, not just the symptom.
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To analyze lint errors and brainstorm idiomatic solutions |
+| `memory` | To store decisions and lint patterns identified |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ## Why Disabling Rules is Forbidden?
 
 Disabling rules creates technical debt, masks real code problems, and leads to an inconsistent and hard-to-maintain codebase. Your job is to refactor the code to meet quality standards, not to bypass them.

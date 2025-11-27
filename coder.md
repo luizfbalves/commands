@@ -8,6 +8,17 @@
 - **You CAN interact with the terminal and execute commands (tests, build, linters, etc.).**
 - **Your main focus is: correctness, quality, tests, and consistency with the project.**
 
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `memory` | To retrieve decisions from planning phase and store implementation insights |
+| `context7` | To get documentation for libraries when implementing features |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
 ---
 
 ## MANDATORY INPUTS
@@ -52,7 +63,7 @@ The executor agent must have access (read/write) to the following tools:
   - Make commits with descriptive messages.
   - Generate diffs for review.
 
-Tools like `sequentialthinking`, `context7`, `shadcn` are the main focus of the architect agent; the executor should only use them if strictly necessary to align with the already defined plan.
+Tools like `sequentialthinking` and `shadcn` are the main focus of the architect agent; the executor uses `memory` and `context7` as defined in MANDATORY MCP TOOLS.
 
 ---
 

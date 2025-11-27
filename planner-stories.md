@@ -2,7 +2,18 @@
 
 Automatically generates a complete user story specification based on the established project pattern.
 
-## 🚀 Usage
+## MANDATORY MCP TOOLS
+
+You MUST use the following MCP servers during your workflow:
+
+| MCP | When to Use |
+|-----|-------------|
+| `sequentialthinking` | To structure the story generation and analyze existing patterns |
+| `memory` | To store project context and story conventions |
+
+**These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
+## Usage
 
 ```
 /planner-stories [feature-name]
@@ -129,5 +140,5 @@ specs/2025-11-15-login-flow/
 
 All files are automatically filled with relevant and specific content for the requested feature.
 
-**Use sequential thinking**
+**Use `sequentialthinking` and `memory` MCP tools throughout the workflow.**
 
