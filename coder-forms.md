@@ -16,6 +16,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate Zod/react-hook-form APIs not in documentation |
+| **DO NOT assume** | Verify shadcn Form components exist before using them |
+| **DO NOT guess** | If unsure about validation patterns, consult `context7` |
+| **ALWAYS verify** | Check that generated code uses correct library APIs |
+| **ALWAYS test** | Mentally validate the form logic before presenting |
+| **ALWAYS match** | Ensure Zod schema matches the form fields exactly |
+
+**If unsure about an API, explicitly state: "Let me verify this pattern with context7."**
+
 ## Core Principles
 
 - **Type Safety First:** All form data will be validated using a **Zod schema**. No `any` types are allowed.
@@ -129,4 +144,16 @@ export function UserForm() {
 ```
 
 This command will be your expert for building high-quality, maintainable forms in your project.
+
+## SELF-VERIFICATION (MANDATORY)
+
+Before presenting generated code, you MUST:
+
+1. **Verify Zod schema** - ensure all validation rules are syntactically correct
+2. **Check react-hook-form usage** - confirm hooks and resolvers are correct
+3. **Validate shadcn imports** - ensure all components exist and are correctly imported
+4. **Test type safety** - verify TypeScript types align between schema and form
+5. **Use `memory`** to log: "Generated form with X fields, verified against libraries"
+
+**Only present code after completing verification.**
 

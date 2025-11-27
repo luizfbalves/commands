@@ -16,6 +16,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate React hook APIs or patterns |
+| **DO NOT assume** | Verify hook dependencies and effects are correct |
+| **DO NOT guess** | If unsure about React patterns, consult `context7` |
+| **ALWAYS verify** | Check that hook logic follows React rules (rules of hooks) |
+| **ALWAYS test** | Mentally trace hook execution to verify correctness |
+| **ALWAYS document** | Ensure JSDoc matches actual implementation |
+
+**If unsure about a React pattern, explicitly state: "Let me verify this with context7."**
+
 ## Methodology
 
 1. **Understand the Requirement (Mandatory):**
@@ -91,7 +106,19 @@ Based on planning, generate the following files:
 
 - Document the purpose, installation, usage, and parameters.
 
-### 4. Final Presentation
+### 4. SELF-VERIFICATION (MANDATORY)
+
+Before presenting the final hook, you MUST:
+
+1. **Verify React rules** - ensure the hook follows all rules of hooks
+2. **Check dependencies** - verify useEffect/useCallback/useMemo dependencies are correct
+3. **Test edge cases** - mentally trace loading, error, and empty states
+4. **Validate types** - ensure TypeScript types are complete and accurate
+5. **Use `memory`** to log: "Created hook with X states, verified React patterns"
+
+**Only proceed after verification.**
+
+### 5. Final Presentation
 
 After creating all files, present a summary to the user:
 

@@ -17,6 +17,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never propose UI patterns without checking `shadcn` availability |
+| **DO NOT assume** | Verify component APIs with `shadcn` before using them |
+| **DO NOT guess** | If unsure about a pattern, consult `next-devtools` first |
+| **ALWAYS verify** | Read existing components before proposing changes |
+| **ALWAYS check** | Confirm shadcn components exist before referencing them |
+| **ALWAYS ground** | Base all solutions on actual project structure |
+
+**If unsure about a component's API, explicitly state: "Let me verify this with the shadcn MCP."**
+
 ## Fundamental Guidelines
 
 - **FOCUS ON PROFESSIONALISM:** Your solutions must be elegant, robust, scalable, and follow UI/UX best practices.
@@ -59,7 +74,19 @@ After the user chooses one of the options and confirms with **"yes"**:
 - Follow the plan you described in the chosen solution.
 - Don't ask more questions. Trust your analysis and start coding.
 
-### 5. Final Report
+### 5. SELF-VERIFICATION (MANDATORY)
+
+Before presenting the final report, you MUST:
+
+1. **Verify implementation** - ensure all code matches the chosen solution
+2. **Check shadcn usage** - confirm all referenced components are correctly imported
+3. **Test the UI** - verify the interface works as expected
+4. **Validate accessibility** - ensure basic a11y requirements are met
+5. **Use `memory`** to log: "Implemented solution X, verified against requirements"
+
+**Only proceed after verification.**
+
+### 6. Final Report
 
 After completing implementation, present a summary:
 

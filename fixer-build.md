@@ -15,6 +15,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate build errors not in the actual output |
+| **DO NOT assume** | Read the actual error message before proposing a fix |
+| **DO NOT guess** | If the error cause is unclear, analyze the surrounding code |
+| **ALWAYS cite** | Quote the exact error message from the build output |
+| **ALWAYS verify** | Re-run build after each fix to confirm resolution |
+| **ALWAYS trace** | Understand the error's origin before fixing |
+
+**If an error's root cause is unclear, explicitly state: "I need to examine [specific file/line] to understand this error."**
+
 ## GOLDEN RULE (INFLEXIBLE)
 
 It is **STRICTLY FORBIDDEN** to:
@@ -55,5 +70,17 @@ Before making any changes, you **MUST** follow this process for **EACH** build e
 
 7.  **Repeat:** If the build still fails, go back to step 3 and analyze the new first error. Continue this cycle until the build runs without errors.
 
-8.  **Final Report:** After the build succeeds, present a summary:
+8.  **SELF-VERIFICATION (MANDATORY)**
+
+    Before declaring success, you MUST:
+    
+    1. **Run final build** - confirm it completes without errors
+    2. **Review all fixes** - ensure no code was commented out or removed
+    3. **Check for regressions** - ensure fixes didn't introduce new issues
+    4. **Verify fix quality** - ensure fixes are proper solutions, not workarounds
+    5. **Use `memory`** to log: "Fixed X build errors, verified proper solutions"
+
+    **Only declare success after completing verification.**
+
+9.  **Final Report:** After the build succeeds, present a summary:
     > "Build completed successfully after X correction cycles. A total of Y errors were fixed. The modified files were: [list of files]."

@@ -15,6 +15,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate monetary violations not visible in the code |
+| **DO NOT assume** | Read the actual code before claiming a violation exists |
+| **DO NOT guess** | If value semantics are unclear, trace through the code |
+| **ALWAYS cite** | Quote the exact line and code that violates the pattern |
+| **ALWAYS verify** | Confirm the value is actually a price before flagging |
+| **ALWAYS check** | Verify the utility functions exist before recommending them |
+
+**If the semantics of a numeric value are unclear, explicitly state: "I need to trace this value's origin to determine if it represents a price."**
+
 ## REFERENCE DOCUMENTATION (SOURCE OF TRUTH)
 
 Use the following documentation as the sole source of truth for this analysis:
@@ -97,4 +112,16 @@ After presenting the complete report, ask:
 
 **If user replies 'plan':** Automatically invoke the `/plan` command, passing the monetary pattern fixes as context.
 **If user replies 'implement':** Proceed with applying the corrections.
+
+## SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST:
+
+1. **Verify each violation** - confirm the value is actually a price, not another numeric
+2. **Check utility existence** - confirm `apps/web/lib/utils/price.ts` exists and has the recommended functions
+3. **Validate fix correctness** - ensure proposed fixes maintain correct cent/decimal semantics
+4. **Trace value origins** - confirm you understand where each price value comes from
+5. **Use `memory`** to log: "Identified X violations, verified against cents pattern"
+
+**Only present report after completing verification.**
 

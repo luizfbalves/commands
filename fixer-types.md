@@ -18,6 +18,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate type errors not in the actual compiler output |
+| **DO NOT assume** | Read the actual error message before proposing a fix |
+| **DO NOT guess** | If the correct type is unclear, consult `context7` for library types |
+| **ALWAYS cite** | Quote the exact TypeScript error code and message |
+| **ALWAYS verify** | Re-run type-check after each fix to confirm resolution |
+| **ALWAYS trace** | Understand the full type chain before proposing a solution |
+
+**If a type error source is unclear, explicitly state: "I need to trace this type through [file/module] to understand the root cause."**
+
 ## GOLDEN RULE (INFLEXIBLE)
 
 - **STRICTLY FORBIDDEN:** Using `any`, `unknown` (as a lazy replacement), `@ts-ignore`, `@ts-nocheck`, or type assertions (`as any`) to silence errors.
@@ -79,7 +94,19 @@ Before analyzing the specific type issue, you **MUST** use the MCP tools defined
 - If it still fails or finds another type issue, go back to step 2 and analyze the new first error.
 - Continue this cycle until the type-check command completes successfully with no errors and no `any` types.
 
-### 6. FINAL SUCCESS REPORT
+### 6. SELF-VERIFICATION (MANDATORY)
+
+Before declaring success, you MUST:
+
+1. **Run final type-check** - confirm zero errors remain
+2. **Review all fixes** - ensure no `any` or `@ts-ignore` was used
+3. **Verify type correctness** - ensure fixes are semantically correct, not just syntactically
+4. **Check for regressions** - ensure fixes didn't break other type contracts
+5. **Use `memory`** to log: "Fixed X type errors, verified no shortcuts used"
+
+**Only declare success after completing verification.**
+
+### 7. FINAL SUCCESS REPORT
 
 - Once the type-check passes with no `any` types, confirm with the user:
   > "Success! The project now passes all type checks with no `any` types remaining. A total of X type issues were fixed across Y files. The modified files were: [list of files]. The code is now fully type-safe and robust."

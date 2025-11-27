@@ -13,6 +13,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate project patterns not visible in existing specs |
+| **DO NOT assume** | Read actual templates before generating content |
+| **DO NOT guess** | If template structure is unclear, ask the user |
+| **ALWAYS follow** | Base all generated content on existing patterns in `specs/` |
+| **ALWAYS verify** | Check that generated files match the template format exactly |
+| **ALWAYS contextualize** | Use actual project stack (NestJS, Next.js, etc.) in requirements |
+
+**If template files cannot be found, explicitly state: "I cannot find the template files. Please verify the `specs/.template/` folder exists."**
+
 ## Usage
 
 ```
@@ -141,4 +156,16 @@ specs/2025-11-15-login-flow/
 All files are automatically filled with relevant and specific content for the requested feature.
 
 **Use `sequentialthinking` and `memory` MCP tools throughout the workflow.**
+
+## SELF-VERIFICATION (MANDATORY)
+
+Before creating any files, you MUST:
+
+1. **Verify template exists** - confirm `specs/.template/` is accessible
+2. **Compare with reference** - ensure generated content matches `specs/2025-11-15-onboarding-flow/` format
+3. **Check project context** - verify tech stack references are accurate
+4. **Validate scenarios** - ensure Given/When/Then format is correctly applied
+5. **Use `memory`** to log: "Verified template format, generated X files following pattern"
+
+**Only create files after completing verification.**
 

@@ -15,6 +15,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never claim duplication exists without showing BOTH locations |
+| **DO NOT assume** | Similar code is not always duplicate - verify logic is identical |
+| **DO NOT guess** | If similarity is partial, state "Similar but not identical" |
+| **ALWAYS cite** | Every duplication MUST show exact `file:line` for BOTH instances |
+| **ALWAYS compare** | Show the actual code snippets side-by-side to prove duplication |
+| **ALWAYS verify** | Re-read both locations before claiming they are duplicates |
+
+**If unsure about duplication, explicitly state: "This may be intentional variation, requires review."**
+
 ## WORKFLOW
 
 ### 1. ASK FOR TARGET (MANDATORY)
@@ -65,7 +80,19 @@ For each instance of duplication or repeated logic found, create a structured re
 
 ---
 
-### 4. PRESENT REFACTORING PLAN AND ASK FOR WORKFLOW CONTINUATION
+### 4. SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST perform this verification:
+
+1. **Re-read each duplication pair** to confirm they are actually duplicates
+2. **Verify both locations exist** - confirm `file:line` references are accurate
+3. **Compare code snippets** - ensure the logic is truly identical, not just similar
+4. **Remove false positives** - similar naming or structure is not duplication
+5. **Use `memory`** to log: "Verified X duplication pairs, removed Y false positives"
+
+**Only proceed after completing verification.**
+
+### 5. PRESENT REFACTORING PLAN AND ASK FOR WORKFLOW CONTINUATION
 
 After generating the complete report, present it to the user and ask:
 

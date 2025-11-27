@@ -14,6 +14,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate path aliases not in tsconfig.json |
+| **DO NOT assume** | Read actual tsconfig.json before proposing replacements |
+| **DO NOT guess** | Calculate exact paths before suggesting alias replacements |
+| **ALWAYS verify** | Confirm the target file exists at the aliased path |
+| **ALWAYS check** | Ensure the proposed alias matches tsconfig.paths exactly |
+| **ALWAYS test** | Run type-check after changes to verify paths resolve |
+
+**If an alias mapping is unclear, explicitly state: "I need to verify this path mapping in tsconfig.json."**
+
 ## STEP 1: ASK THE USER (MANDATORY)
 
 Your first and only initial action must be to ask the user:
@@ -87,4 +102,16 @@ After presenting the complete report, ask:
 - **Execute this step ONLY if the user replies 'yes'.**
 - Apply each of the proposed replacements in the report.
 - **After applying changes, run the linter and type-checker (`tsc --noEmit`) to ensure paths are correct and code compiles.**
+
+## SELF-VERIFICATION (MANDATORY)
+
+Before declaring success, you MUST:
+
+1. **Run type-check** - confirm all imports resolve correctly
+2. **Verify each replacement** - ensure aliased paths point to correct files
+3. **Check for broken imports** - ensure no module resolution errors
+4. **Test the application** - if possible, verify the app still runs
+5. **Use `memory`** to log: "Replaced X imports with aliases, verified resolution"
+
+**Only declare success after completing verification.**
 

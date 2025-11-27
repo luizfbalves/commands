@@ -21,6 +21,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate expected values without understanding actual code behavior |
+| **DO NOT assume** | Read the actual implementation before writing tests |
+| **DO NOT guess** | If behavior is unclear, analyze the code more deeply |
+| **ALWAYS verify** | Trace through code mentally to confirm expected outputs |
+| **ALWAYS match** | Test expectations must match actual implementation |
+| **ALWAYS realistic** | Use realistic test data based on actual code constraints |
+
+**If code behavior is ambiguous, explicitly state: "I need to read [specific file] to understand expected behavior."**
+
 ## TESTING FRAMEWORK & STYLE
 
 - **Testing Framework:** Vitest (required)
@@ -110,6 +125,18 @@ The agent must:
 Only continue after confirming internally:
 
 > "Yes — all tests are guaranteed to pass given the current implementation."
+
+### SELF-VERIFICATION (MANDATORY)
+
+Before finalizing tests, you MUST:
+
+1. **Re-read source code** - verify each test assertion matches actual behavior
+2. **Check mock accuracy** - ensure mocks reflect real module behavior
+3. **Validate edge cases** - confirm edge case tests are based on real constraints
+4. **Trace execution** - mentally run each test to confirm it would pass
+5. **Use `memory`** to log: "Verified X tests against source implementation"
+
+**Only finalize after completing verification.**
 
 ---
 

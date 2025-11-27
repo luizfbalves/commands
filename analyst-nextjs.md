@@ -19,6 +19,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate performance issues not visible in the actual code |
+| **DO NOT assume** | Never assume Next.js behavior - always verify with `next-devtools` |
+| **DO NOT guess** | If unsure about a pattern, query `next-devtools` before claiming it's wrong |
+| **ALWAYS cite** | Every finding MUST include exact `file:line` location as evidence |
+| **ALWAYS verify** | Cross-check findings against `next-devtools` best practices |
+| **ALWAYS source** | Reference the MCP source when citing Next.js best practices |
+
+**If unsure about any finding, explicitly state: "This requires manual verification."**
+
 ### Using `next-devtools` MCP
 
 Before any analysis, you MUST query the `next-devtools` MCP server for up-to-date information:
@@ -124,6 +139,18 @@ If the folder is disorganized, or very large files are detected:
      Reduced to only orchestrate imports.
 
 ---
+
+### STEP 6: SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST perform this verification:
+
+1. **Re-read each finding** against the source file to confirm accuracy
+2. **Verify every checklist item** was actually checked against the code, not assumed
+3. **Cross-reference with `next-devtools`** - ensure your recommendations align with official best practices
+4. **Remove unverified claims** - any finding without concrete code evidence must be removed
+5. **Mark uncertain findings** with "[Requires Verification]" if you cannot confirm with 100% certainty
+
+**Only proceed to present the report after completing this verification.**
 
 ### Mandatory question at the end:
 

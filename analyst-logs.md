@@ -15,6 +15,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate log statements that don't exist in the code |
+| **DO NOT assume** | Read the actual log content before classifying it |
+| **DO NOT guess** | If log purpose is unclear, state "Purpose unclear, requires review" |
+| **ALWAYS cite** | Every log finding MUST include exact `file:line` location |
+| **ALWAYS quote** | Show the actual log statement, not a paraphrase |
+| **ALWAYS context** | Check surrounding code to understand log purpose |
+
+**If unsure about a log's classification, explicitly state: "Classification uncertain, manual review recommended."**
+
 ## ANALYSIS GUIDELINES (DO NOT FOCUS ON THE METHOD)
 
 Look for ANY type of logging call (`console.*`, `this.logger.*`, `logger.*`, etc.) and classify it based on the following rules:
@@ -79,6 +94,18 @@ For each log found, present a detailed report.
     - **Justification:** **EXPOSURE OF SENSITIVE DATA (Token).** This is a serious security risk.
 
 ---
+
+### STEP 4: SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST perform this verification:
+
+1. **Re-read each log location** to confirm the log exists at that line
+2. **Verify log content** - ensure your quoted text matches the actual code
+3. **Check classification** - re-evaluate each log against the guidelines
+4. **Remove phantom logs** - delete any finding where you cannot find the log
+5. **Use `memory`** to log: "Verified X logs, reclassified Y, removed Z phantom entries"
+
+**Only proceed after completing verification.**
 
 ### FINAL MANDATORY QUESTION
 

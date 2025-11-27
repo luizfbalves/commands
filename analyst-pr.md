@@ -15,6 +15,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate issues not visible in the actual diff |
+| **DO NOT assume** | Never assume code behavior outside the diff context |
+| **DO NOT guess** | If you cannot see the full context, state it explicitly |
+| **ALWAYS cite** | Every observation MUST reference specific lines in the diff |
+| **ALWAYS verify** | Re-read the diff line before making any claim about it |
+| **ALWAYS qualify** | If context is limited, say "Based on the visible diff..." |
+
+**If unsure about any observation, explicitly state: "This requires viewing the full file for verification."**
+
 ## Review Methodology
 
 1. **Context Analysis:** Understand the PR/change purpose. What problem is being solved? What feature is being added?
@@ -86,7 +101,19 @@ Present a structured and professional report.
 
 ---
 
-### 4. Present the Report and Ask for Workflow Continuation
+### 4. SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST perform this verification:
+
+1. **Re-read the diff** to confirm each observation is accurate
+2. **Verify line references** - ensure cited lines match your descriptions
+3. **Check for assumptions** - mark any observation based on incomplete context
+4. **Remove fabrications** - delete any claim not directly supported by the diff
+5. **Use `memory`** to log: "Verified X observations against diff"
+
+**Only proceed after completing verification.**
+
+### 5. Present the Report and Ask for Workflow Continuation
 
 Show the complete report and ask:
 

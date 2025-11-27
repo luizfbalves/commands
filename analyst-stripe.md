@@ -16,6 +16,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never fabricate Stripe issues not visible in the actual code |
+| **DO NOT assume** | Never assume Stripe API behavior - always verify with `context7` |
+| **DO NOT guess** | If unsure about Stripe patterns, query MCP before claiming it's wrong |
+| **ALWAYS cite** | Every finding MUST include exact `file:line` location as evidence |
+| **ALWAYS source** | Every Stripe claim MUST reference official documentation from MCP |
+| **ALWAYS verify** | Cross-check code against current Stripe API version |
+
+**If unsure about any finding, explicitly state: "This requires verification against Stripe documentation."**
+
 ---
 
 ## CORE DIRECTIVES (MANDATORY)
@@ -127,7 +142,19 @@ To securely handle webhooks in a production environment, you should only accept 
 
 ---
 
-### 5. PRESENT REPORT AND ASK FOR WORKFLOW CONTINUATION
+### 5. SELF-VERIFICATION (MANDATORY)
+
+Before presenting your report, you MUST perform this verification:
+
+1. **Re-read each finding** against the source file to confirm accuracy
+2. **Verify every `file:line` citation** actually exists and matches your description
+3. **Cross-reference with `context7`** - ensure Stripe claims match official documentation
+4. **Check API versions** - confirm recommendations apply to the Stripe API version in use
+5. **Remove unverified claims** - any finding without MCP documentation support must be marked
+
+**Only proceed after completing verification.**
+
+### 6. PRESENT REPORT AND ASK FOR WORKFLOW CONTINUATION
 
 After generating the complete audit report, ask:
 

@@ -12,12 +12,27 @@ Run the project's linter, identify, and automatically fix all issues, strictly a
 
 You MUST use the following MCP servers during your workflow:
 
-| MCP | When to Use |
-|-----|-------------|
+| MCP                  | When to Use                                               |
+| -------------------- | --------------------------------------------------------- |
 | `sequentialthinking` | To analyze lint errors and brainstorm idiomatic solutions |
-| `memory` | To store decisions and lint patterns identified |
+| `memory`             | To store decisions and lint patterns identified           |
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
+
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule                  | Description                                                |
+| --------------------- | ---------------------------------------------------------- |
+| **DO NOT invent**     | Never fabricate lint errors not in the actual output       |
+| **DO NOT assume**     | Read the actual lint message before proposing a fix        |
+| **DO NOT guess**      | If the rule's purpose is unclear, look it up before fixing |
+| **ALWAYS cite**       | Quote the exact rule name and error message                |
+| **ALWAYS verify**     | Re-run linter after each batch of fixes                    |
+| **ALWAYS understand** | Know WHY a rule exists before deciding how to fix          |
+
+**If a rule's purpose is unclear, explicitly state: "I need to understand rule [rule-name] before proposing a fix."**
 
 ## Why Disabling Rules is Forbidden?
 
@@ -64,8 +79,19 @@ Before touching any line of code, you **MUST** follow this process for **EACH** 
 - Ensure the errors are resolved and no new issues were introduced.
 - Repeat the process for the remaining warnings.
 
-### 6. Final Report
+### 6. SELF-VERIFICATION (MANDATORY)
+
+Before declaring success, you MUST:
+
+1. **Run final lint** - confirm zero errors remain
+2. **Review all fixes** - ensure no eslint-disable comments were added
+3. **Check fix quality** - ensure fixes address root cause, not symptoms
+4. **Verify no regressions** - ensure fixes didn't introduce new warnings
+5. **Use `memory`** to log: "Fixed X lint errors, Y warnings, no rules disabled"
+
+**Only declare success after completing verification.**
+
+### 7. Final Report
 
 - Provide a clear summary:
   > "Fixing complete. Resolved X errors and Y warnings. Modified files were: [list of files]. Lint now passes without errors and with no rules disabled."
-

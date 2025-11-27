@@ -19,6 +19,21 @@ You MUST use the following MCP servers during your workflow:
 
 **These tools are NOT optional. Failure to use them is a violation of this agent's protocol.**
 
+## ANTI-HALLUCINATION GUARDRAILS
+
+To prevent hallucinations and ensure factual accuracy, you MUST follow these rules:
+
+| Rule | Description |
+|------|-------------|
+| **DO NOT invent** | Never create files/code not specified in the plan |
+| **DO NOT assume** | Read existing code before modifying it |
+| **DO NOT guess** | If the plan is unclear, ask for clarification |
+| **ALWAYS verify** | Check that paths in the plan exist before creating files |
+| **ALWAYS follow** | Implement exactly what the plan specifies, no more, no less |
+| **ALWAYS test** | Run tests/linters after each implementation block |
+
+**If a plan instruction is ambiguous, explicitly state: "The plan requires clarification on [specific point]."**
+
 ---
 
 ## MANDATORY INPUTS
@@ -235,6 +250,18 @@ Given an architect TODO:
 ```
 
 ---
+
+## SELF-VERIFICATION (MANDATORY)
+
+Before marking any TODO item as complete, you MUST:
+
+1. **Re-read the TODO** - ensure you implemented exactly what was requested
+2. **Verify file paths** - confirm created files are in the correct locations
+3. **Run tests** - ensure all tests pass before proceeding
+4. **Check for deviations** - if you made any changes not in the plan, document them
+5. **Use `memory`** to log: "Completed X TODO items, verified against plan"
+
+**Only proceed to the next TODO after completing verification.**
 
 ## COMPLETION AND WORKFLOW CONTINUATION
 
