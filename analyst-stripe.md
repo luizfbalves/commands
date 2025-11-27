@@ -32,8 +32,8 @@ Wait for the user's response before proceeding.
 - Use `@Files` or `@Folders` to load the target code into your context.
 - Use `sequentialthinking` to structure your analysis. Ask yourself:
 
-  - “What is this code trying to accomplish with Stripe?” (e.g., create a Payment Intent, handle a webhook, render Elements).
-  - “What are the potential security or error-handling pitfalls?”
+  - "What is this code trying to accomplish with Stripe?" (e.g., create a Payment Intent, handle a webhook, render Elements).
+  - "What are the potential security or error-handling pitfalls?"
 
 - Use `memory` to store key findings during your analysis.
 
@@ -43,11 +43,11 @@ Wait for the user's response before proceeding.
 
 This is the most critical step. You **must** use the Stripe MCP server to validate your findings and gather official guidance. Ask it questions like:
 
-- “What are the best practices for creating a Payment Intent with the latest Stripe API version?”
-- “How do you properly handle webhooks for `payment_intent.succeeded` events in a Next.js environment?”
-- “Show me the correct way to create a Setup Intent session for a subscription model.”
-- “What are the required security considerations for handling PCI compliance with Stripe Elements?”
-- “What is the recommended way to handle idempotency for webhook events?”
+- "What are the best practices for creating a Payment Intent with the latest Stripe API version?"
+- "How do you properly handle webhooks for `payment_intent.succeeded` events in a Next.js environment?"
+- "Show me the correct way to create a Setup Intent session for a subscription model."
+- "What are the required security considerations for handling PCI compliance with Stripe Elements?"
+- "What is the recommended way to handle idempotency for webhook events?"
 
 ---
 
@@ -70,7 +70,7 @@ A brief, objective summary of what the analyzed code does with Stripe.
 
 _Example:_
 
-> “The code in `checkout/route.ts` creates a Payment Intent, confirms the payment on the frontend, and saves the order to the database. It does not currently handle webhooks for asynchronous events like `charge.succeeded`.”
+> "The code in `checkout/route.ts` creates a Payment Intent, confirms the payment on the frontend, and saves the order to the database. It does not currently handle webhooks for asynchronous events like `charge.succeeded`."
 
 ---
 
@@ -81,7 +81,7 @@ A numbered list of specific errors, deviations from best practices, or potential
 - **Location:** `[file:line]`
 - **Category:** [e.g., Security, Error Handling, Logic Flaw, API Usage]
 - **Description:** A clear, objective description of the issue.
-- **Impact:** An explanation of why this is a problem (e.g., “This creates a race condition,” “This violates Stripe's idempotency requirements”).
+- **Impact:** An explanation of why this is a problem (e.g., "This creates a race condition," "This violates Stripe's idempotency requirements").
 
 _Example:_
 
@@ -112,3 +112,21 @@ _Example:_
 ##### **From MCP: `stripe.webhooks`**
 
 To securely handle webhooks in a production environment, you should only accept events from Stripe's IP addresses and verify webhook signatures using your endpoint's secret. Webhooks should be acknowledged with a `200` status code immediately to prevent redelivery...
+
+---
+
+### 5. PRESENT REPORT AND ASK FOR WORKFLOW CONTINUATION
+
+After generating the complete audit report, ask:
+
+> "Here is the complete Stripe integration audit for `[Target File/Folder]`.
+>
+> **What would you like to do next?**
+> - **'plan'** → I'll call `/plan` to create a detailed implementation plan for these recommendations
+> - **'details'** → I'll provide more details on specific findings or Stripe documentation
+> - **'done'** → End the audit session"
+
+**Wait for an explicit user response. Do not make any changes.**
+
+**If user replies 'plan':** Automatically invoke the `/plan` command, passing the Stripe recommendations as context for the planning agent.
+

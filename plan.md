@@ -30,15 +30,15 @@ Wait for the user's response before proceeding.
 
 After the user responds, you MUST follow this two-step process to gather all necessary information before planning:
 
-1.  **Check for User Stories:**
+1. **Check for User Stories:**
 
-    - Use `@Files` to check if there is a `spec` folder at the root of the project.
-    - If a `spec` folder exists, look for and read user stories (e.g., `user-login.feature`, `create-order.feature`) or any markdown files that describe user requirements.
-    - **Use these user stories as your primary guide.** The implementation plan should directly address the requirements and acceptance criteria described in these stories.
+   - Use `@Files` to check if there is a `spec` folder at the root of the project.
+   - If a `spec` folder exists, look for and read user stories (e.g., `user-login.feature`, `create-order.feature`) or any markdown files that describe user requirements.
+   - **Use these user stories as your primary guide.** The implementation plan should directly address the requirements and acceptance criteria described in these stories.
 
-2.  **Gather Technical Context:**
-    - Use `@Files` and `@Folders` to read the relevant parts of the codebase (e.g., route structure, data models, existing components).
-    - Use `context7` for a macro view of the project's architecture.
+2. **Gather Technical Context:**
+   - Use `@Files` and `@Folders` to read the relevant parts of the codebase (e.g., route structure, data models, existing components).
+   - Use `context7` for a macro view of the project's architecture.
 
 ### 3. ANALYSIS AND SEQUENTIAL THINKING
 
@@ -89,3 +89,20 @@ An ordered list of actionable tasks, ordered by the logical sequence of implemen
 - [ ] Connect the form to the API endpoint with error handling
 - [ ] Add navigation to the new page (e.g., in the main menu)
 ```
+
+---
+
+### 5. PRESENT PLAN AND ASK FOR WORKFLOW CONTINUATION
+
+After generating the complete plan and TODO list, present them to the user and ask:
+
+> "Here is the complete implementation plan and TODO list for `[Feature Name]`.
+>
+> **What would you like to do next?**
+> - **'implement'** → I'll call `/coder` to start implementing this plan immediately
+> - **'revise'** → I'll adjust the plan based on your feedback
+> - **'done'** → Save the plan for later implementation"
+
+**Wait for an explicit user response.**
+
+**If user replies 'implement':** Automatically invoke the `/coder` command, passing the implementation plan and TODO list as context for the executor agent.

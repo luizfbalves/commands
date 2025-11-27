@@ -54,13 +54,21 @@ For each instance of duplication or repeated logic found, create a structured re
 
 ---
 
-### 4. PRESENT REFACTORING PLAN AND ASK FOR PERMISSION
+### 4. PRESENT REFACTORING PLAN AND ASK FOR WORKFLOW CONTINUATION
 
-After generating the complete report, present it to the user and ask the final mandatory question:
+After generating the complete report, present it to the user and ask:
 
-> "Analysis complete. I found X instances of duplicated code and common patterns. Here is the refactoring plan to create shared utilities and constants. Would you like me to apply these changes? Please reply **'yes'** to proceed or **'no'** to cancel."
+> "Analysis complete. I found X instances of duplicated code and common patterns.
+>
+> **What would you like to do next?**
+> - **'plan'** → I'll call `/plan` to create a detailed implementation plan for this refactoring
+> - **'implement'** → I'll apply these changes directly now
+> - **'done'** → Save the report for later review"
 
 **Wait for an explicit user response. Do not make any changes until you have permission.**
+
+**If user replies 'plan':** Automatically invoke the `/plan` command, passing the refactoring recommendations as context.
+**If user replies 'implement':** Proceed to step 5.
 
 ### 5. APPLY REFACTORING (CONDITIONAL)
 
@@ -84,3 +92,4 @@ After generating the complete report, present it to the user and ask the final m
 - **Execute this step ONLY if the verification in step 6 was successful.**
 - Confirm with the user:
   > "Success! The refactoring is complete. A total of X shared utilities/constants were created and Y files were modified. The modified files were: [list of files]. The code is now more DRY (Don't Repeat Yourself) and maintainable."
+

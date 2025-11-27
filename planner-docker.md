@@ -118,3 +118,4 @@ After generating the complete report, present it to the user and ask the final m
 > "Here is the complete architectural plan for your Docker scenario. This plan is the result of a structured analysis from the perspectives of security, performance, and operations. Please review it carefully. Would you like me to proceed with implementing this plan? Please reply **'implement'** to proceed or **'revise'** if you want me to rethink it."
 
 **Wait for an explicit user response. Do not make any changes until you have permission.**
+

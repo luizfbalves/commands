@@ -16,7 +16,7 @@ The goal is not to maximize coverage but to validate real expected behaviors of 
 - **Required MCPs:**
   - `sequentialthinking` — to break down code behavior into testable units
   - `memory` — to store important structural decisions for consistent test generation
-  - `context7` — to understand the project’s architecture and existing test conventions
+  - `context7` — to understand the project's architecture and existing test conventions
   - Any other available MCPs that improve understanding, including dependency inspection and documentation lookup
 
 ---
@@ -29,7 +29,7 @@ Your first and only initial action must be:
 
 > "Which file or folder would you like me to write unit tests for? Please provide the path (e.g., `src/utils/validation.ts`, `components/Button.tsx`, or `services/api/`)."
 
-Wait for the user’s reply. Do not proceed before the response.
+Wait for the user's reply. Do not proceed before the response.
 
 ---
 
@@ -79,7 +79,7 @@ Wait for explicit user confirmation.
 
 ---
 
-## 5. WRITE THE TEST FILES (ONLY IF USER REPLIES “YES”)
+## 5. WRITE THE TEST FILES (ONLY IF USER REPLIES "YES")
 
 - Create a `__tests__` directory when needed.
 - Generate clean, readable Vitest test files.
@@ -102,7 +102,7 @@ The agent must:
 
 Only continue after confirming internally:
 
-> “Yes — all tests are guaranteed to pass given the current implementation.”
+> "Yes — all tests are guaranteed to pass given the current implementation."
 
 ---
 
@@ -115,3 +115,4 @@ After confirming tests pass:
 > You can now run `npm run test` or `vitest` to execute them."
 
 ---
+

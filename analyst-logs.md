@@ -73,6 +73,14 @@ For each log found, present a detailed report.
 
 After presenting the complete report, ask:
 
-> "Audit complete. I found X appropriate logs, Y inappropriate logs, and Z critical ones. This report details the recommendations for each. Would you like me to generate an action plan based on these suggestions?"
+> "Audit complete. I found X appropriate logs, Y inappropriate logs, and Z critical ones.
+>
+> **What would you like to do next?**
+> - **'plan'** → I'll call `/plan` to create an implementation plan for cleaning up logs
+> - **'details'** → I'll provide more details on specific log findings
+> - **'done'** → End the audit session"
 
 **DO NOTHING BEYOND THIS. WAIT FOR THE USER'S RESPONSE.**
+
+**If user replies 'plan':** Automatically invoke the `/plan` command, passing the log cleanup recommendations as context.
+
