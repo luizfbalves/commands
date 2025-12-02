@@ -95,3 +95,4 @@ Before declaring success, you MUST:
 
 - Provide a clear summary:
   > "Fixing complete. Resolved X errors and Y warnings. Modified files were: [list of files]. Lint now passes without errors and with no rules disabled."
+

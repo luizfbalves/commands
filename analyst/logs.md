@@ -122,3 +122,4 @@ After presenting the complete report, ask:
 **DO NOTHING BEYOND THIS. WAIT FOR THE USER'S RESPONSE.**
 
 **If user replies 'plan':** Automatically invoke the `/plan` command, passing the log cleanup recommendations as context.
+

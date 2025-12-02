@@ -137,3 +137,4 @@ After generating the complete plan and TODO list, present them to the user and a
 **Wait for an explicit user response.**
 
 **If user replies 'implement':** Automatically invoke the `/coder` command, passing the implementation plan and TODO list as context for the executor agent.
+

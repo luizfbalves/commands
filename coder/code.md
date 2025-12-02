@@ -280,3 +280,4 @@ After completing all TODO items, present a summary and ask:
 **Wait for user response.**
 
 **If user replies 'audit':** Automatically invoke the `/code-auditor` command on the modified files to review quality.
+
