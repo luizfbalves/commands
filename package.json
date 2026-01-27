@@ -1,8 +1,0 @@
-{
-  "name": "agent-nestjs",
-  "private": true,
-  "version": "1.0.0",
-  "scripts": {
-    "agent:validate": "node tools/nestjs-agent/cli.js generate:module demo --path src/demo --force && node tools/nestjs-agent/cli.js generate:crud demo --path src/demo --force && node tools/nestjs-agent/cli.js enable:auth-jwt --path src/auth --force && node tools/nestjs-agent/cli.js integrate:monitoring --path src/monitoring --force"
-  }
-}
